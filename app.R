@@ -57,7 +57,7 @@ ui <- fluidPage(
       span(htmlOutput("key_date4"), style = {"color:#1b9e77;font-size:20px;font-style:italic"}),
       br(),
       span("preview of timetable:", style = {"color:blue; font-size:30px; font-style:italic; !imporant"} ),
-      uiOutput("md_file")) #htmlOutput("inc") for slower way
+      uiOutput("md_file"))
 )
 )
 
@@ -73,7 +73,7 @@ server = function(input, output, session) {
     })
   
   #date print function
-  dprint <- function(date_to_use, adjuster){
+  dprint <- function(date_to_use, adjuster) {
     new_date <- date_to_use - adjuster
     paste0(wday(new_date, label = TRUE, abbr = FALSE)," ", format(new_date, "%d %B %Y"))
   }
@@ -83,8 +83,6 @@ server = function(input, output, session) {
   output$key_date2 <- reactive({paste0(dprint(input$report_date, 7), " - 5 day PRA")})
   output$key_date3 <- reactive({paste0(dprint(input$report_date, 6), " - SG handling meeting")})
   output$key_date4 <- reactive({paste0(dprint(input$report_date, 0), " - publication")})
-  
-  #output$key_date1 <- renderText({paste0("<font color=\"#e7298a\">", dprint(input$report_date, 12), " - key messages handling", "</font>")})
   
   #show html output as a preview
   output$md_file <- renderUI({
@@ -97,24 +95,6 @@ server = function(input, output, session) {
   HTML(markdown::renderMarkdown(knitr::knit("auto_pub_rmd.Rmd")))
   })
 
-  ###this way also works####
-  #but it is slower
-  #make function to generate HTML file using params
-  #then return the html
-  #getpg <- function(){
-  #  params <- list(input_pub_name = input$report_title, 
-  #                  input_pub_date = input$report_date)
-  #  render("auto_pub_rmd.Rmd",
-  #         output_format = "html_document",
-  #         params = params,
-  #         envir = new.env(parent = globalenv()))
-  #  return(includeHTML("auto_pub_rmd.html"))
-  #}
-  #html output is then passed to output object for display
-  #output$inc <- renderUI({
-  # getpg()
-  #})
-  
 #****************************************
 #download handler
 #****************************************
