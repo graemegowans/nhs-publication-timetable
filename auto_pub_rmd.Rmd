@@ -110,7 +110,8 @@ pub_day <- wday(pub_date, label = TRUE, abbr = FALSE)
 
 * **Prior to today:**
 If possible, review content of publication with the Communications Manager:<br>NSS.PHI-Communications@nhs.net
-* Ensure the publication summary is in the relevant Health Topic folder for review at Key Messages Handling meeting by 3pm:<br>`Publications/HealthTopic/YourHealthTopic/PublicationName/yyyy-mm-dd`
+* Ensure the publication summary is in the relevant Health Topic folder for review 
+at Key Messages Handling meeting by 3pm:<br>`Publications/HealthTopic/YourHealthTopic/PublicationName/yyyy-mm-dd`
 
 ***
 ### **`r dprint(pub_date, 12)`**
@@ -131,11 +132,13 @@ If possible, review content of publication with the Communications Manager:<br>N
 
 #### *Analyst actions:*
 
-* Analyst finalises Publication Summary, Publication Report, Statistical Release (if appropriate) and all downloadable tables/files <div class = "open_data">(Excel and csv/Open Data)</div>
+* Analyst finalises Publication Summary, Publication Report, Statistical Release (if appropriate) 
+and all downloadable tables/files <div class = "open_data">(Excel and csv/Open Data)</div>
 * Analyst completes the Disclosure Form and retains in team
 * Editor checks the publication for accuracy and presentation and completes checklist on the Publication Report. 
 * Service Manager (or equivalent) then gives the Approval for Release by signing the Publication Report 
-* Provide Publications Team with narrative for all web pages within the topic area that need updated when the publication goes live using NSS.PHIWebsites@nhs.net 
+* Provide Publications Team with narrative for all web pages within the topic area that 
+need updated when the publication goes live using NSS.PHIWebsites@nhs.net 
 
 #### *Publications & SG Team Actions:*
 
@@ -148,7 +151,8 @@ If possible, review content of publication with the Communications Manager:<br>N
 
 #### *Analyst actions:*
 
-* Place all files in shared directory by 8am, including all Open Data Files:<br> `Publications/HealthTopic/YourHealthTopic/PublicationName/yyyy-mm-dd`)
+* Place all files in shared directory by 8am, including all Open Data Files:
+<br> `Publications/HealthTopic/YourHealthTopic/PublicationName/yyyy-mm-dd`)
 * Editor advises Publications Team by 8:00am of this transfer via email: NSS.PHIPublications@nhs.net
 
 #### *Publications & SG Team Actions:*
@@ -164,8 +168,10 @@ If possible, review content of publication with the Communications Manager:<br>N
 
 #### *Analyst actions:*
 
-* *Note:* 5 day Pre Release Access can only be provided by ISD Director and ISD Statistical Governance; exceptions to this need Head of Service approval.
-* Where 5 day PRA for other individuals has been agreed with Head of Service/Service Manager/Statistical Governance, send out email around 11:30 am.
+* *Note:* 5 day Pre Release Access can only be provided by ISD Director and
+ISD Statistical Governance; exceptions to this need Head of Service approval.
+* Where 5 day PRA for other individuals has been agreed with Head of Service/Service Manager/Statistical Governance,
+send out email around 11:30 am.
 
 #### *Publications & SG Team Actions:*
 <div class = "statgov">
@@ -183,8 +189,10 @@ If possible, review content of publication with the Communications Manager:<br>N
 
 #### *Analyst actions:*
 
-* Editor (or equivalent) to attend Handling Meeting, if required.  This meeting is usually held at Gyle Square (teleconference with SG)
-* If changes are required, advise Publications Team and provide the changes as soon as possible:<br>NSS.PHIPublications@nhs.net
+* Editor (or equivalent) to attend Handling Meeting, if required.  
+This meeting is usually held at Gyle Square (teleconference with SG)
+* If changes are required, advise Publications Team and provide the changes as soon as possible:
+<br>NSS.PHIPublications@nhs.net
 * If changes are required to Open Data content, contact Open Data team as soon as possible:<br>NSS.PHI-OpenData@nhs.net
 * If no further changes are required, also advise Publications Team 
 
@@ -198,14 +206,18 @@ If possible, review content of publication with the Communications Manager:<br>N
 
 #### *Analyst actions:*
 
-* Final Publication Summary, Report, Statistical Release (if appropriate) and Twitter content form and tables are placed in shared directory as soon as possible and no later than 12 noon:<br>
+* Final Publication Summary, Report, Statistical Release (if appropriate) and 
+Twitter content form and tables are placed in shared directory as soon as possible and no later than 12 noon:<br>
 (`Dept/PHI Publications/yyyy-mm-dd/YourPublication/`)
-* Editor advises Publications Team of this transfer via email:<br>NSS.PHIPublications@nhs.net<br>by 12 noon. Even if there's no change, please advise Publications Team.
-* *Note:* Publications Team will create PDF versions of the Publication Summary, Publication Report and Statistical Release (if appropriate) and make available for Analyst to check.
+* Editor advises Publications Team of this transfer via email:<br>
+NSS.PHIPublications@nhs.net<br>by 12 noon. Even if there's no change, please advise Publications Team.
+* *Note:* Publications Team will create PDF versions of the Publication Summary, Publication Report and
+Statistical Release (if appropriate) and make available for Analyst to check.
 
 #### *Publications & SG Team Actions:*
 <div class = "pubs">
-* Create PDF versions of the Publication Summary, Publication Report and Statistical Release (if appropriate) and send to Analyst for checking.
+* Create PDF versions of the Publication Summary, Publication Report and Statistical Release (if appropriate)
+and send to Analyst for checking.
 * Reload any updated Excel files.
 </div>
 <div class = "open_data">
