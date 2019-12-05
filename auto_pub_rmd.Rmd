@@ -82,11 +82,6 @@ dprint <- function(date_to_use, adjuster){
 pub_name <- params$input_pub_name
 pub_date <- ymd(params$input_pub_date)
 
-#output: html_document
-#params:
-#  input_pub_name: NA
-#  input_pub_date: NA
-
 ```
 
 ## **timetable for publication**
@@ -164,14 +159,14 @@ need updated when the publication goes live using NSS.PHIWebsites@nhs.net
 ***
 ### **`r dprint(pub_date, 7)`**
 
-<div class = "key_date">5 Day PRA</div>
+<div class = "key_date">5 Day Pre Release Access (PRA)</div>
 
 #### *Analyst actions:*
 
-* *Note:* 5 day Pre Release Access can only be provided by ISD Director and
-ISD Statistical Governance; exceptions to this need Head of Service approval.
+* *Note:* 5 day PRA can only be provided by ISD Director and
+Statistical Governance; exceptions to this need Head of Service approval.
 * Where 5 day PRA for other individuals has been agreed with Head of Service/Service Manager/Statistical Governance,
-send out email around 11:30 am.
+send email around 11:30 am.
 
 #### *Publications & SG Team Actions:*
 <div class = "statgov">
@@ -209,8 +204,8 @@ This meeting is usually held at Gyle Square (teleconference with SG)
 * Final Publication Summary, Report, Statistical Release (if appropriate) and 
 Twitter content form and tables are placed in shared directory as soon as possible and no later than 12 noon:<br>
 (`Dept/PHI Publications/yyyy-mm-dd/YourPublication/`)
-* Editor advises Publications Team of this transfer via email:<br>
-NSS.PHIPublications@nhs.net<br>by 12 noon. Even if there's no change, please advise Publications Team.
+* Editor advises Publications Team of this transfer via email (NSS.PHIPublications@nhs.net) by 12 noon.
+Even if there's no change, please advise Publications Team.
 * *Note:* Publications Team will create PDF versions of the Publication Summary, Publication Report and
 Statistical Release (if appropriate) and make available for Analyst to check.
 
