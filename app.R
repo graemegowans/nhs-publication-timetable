@@ -1,9 +1,7 @@
 #****************************************
-#script information
-#name for Shiny:
-#nhs-publication-timetable
-#written by Graeme
-#November 2019
+#name for Shiny: nhs-publication-timetable
+#written by Graeme November 2019
+#Updated Dec 2020 for new emails/tidying
 #generates a publication timetable
 #with key dates filled in
 #****************************************
@@ -15,16 +13,7 @@ library(lubridate)
 library(rmarkdown)
 library(shiny)
 library(janitor)
-
-#****************************************
-#generate list of invalid dates
-#****************************************
-inv_dates <- c(
-  seq(from = ymd("2019-12-25"), to = ymd("2025-12-25"), by = "years"),
-  seq(from = ymd("2019-12-24"), to = ymd("2025-12-24"), by = "years"),
-  seq(from = ymd("2020-01-01"), to = ymd("2025-01-01"), by = "years"),
-  seq(from = ymd("2020-01-02"), to = ymd("2025-01-02"), by = "years")
-)
+library(glue)
 
 #****************************************
 #generate UI
@@ -32,31 +21,49 @@ inv_dates <- c(
 
 #UI for generating report
 ui <- fluidPage(
-  titlePanel("generate publication timetable"),
+  
+  tags$html(lang="en"),
+  tags$head(tags$style(HTML(glue(".form-control 
+                          {background-color: #FFFFFF; 
+                          border: 1px solid #000000}", #input fields
+                       ".well
+                          {background-color: #FFFFFF; 
+                          border: 1px solid #000000}", #sidepanel box
+                       ".btn
+                          {background-color: #FFFFFF; 
+                          border: 1px solid #000000}", #download button
+                       ".keydate
+                          {font-size: 20px;
+                          font-style: italic;}", #key date preview
+                       .open = "{{", .close = "}}")))),
+  
+  titlePanel("PHS publication timetable"),
   
   #Application title
   sidebarLayout(
     sidebarPanel(
-      textInput("report_title", "Enter report name", value = ""),
-      dateInput("report_date", 
-                "Choose publication date", 
-                value = "",
+      textInput(inputId = "report_title", 
+                label = "Enter report name", 
+                value = NULL),
+      dateInput(label = "Choose publication date",
+                inputId = "report_date", 
+                 
+                value = NULL,
                 format = "yyyy-mm-dd", 
                 min = Sys.Date(), 
-                daysofweekdisabled = c(0, 1, 3, 4, 5, 6),
-                datesdisabled = inv_dates),
-      downloadButton("report", "download timetable"),
+                daysofweekdisabled = c(0, 1, 3, 4, 5, 6)),
+      downloadButton(outputId = "report", label = "download timetable"),
       width = 2
   ),
   
     mainPanel(
-      span("key dates:",style = {"font-size:30px;font-style:italic"} ),
-      span(htmlOutput("key_date1"), style = {"color:#e7298a; font-size:20px; font-style:italic"}),
-      span(htmlOutput("key_date2"), style = {"color:#7570b3;font-size:20px;font-style:italic"}),
-      span(htmlOutput("key_date3"), style = {"color:#d95f02;font-size:20px;font-style:italic"}),
-      span(htmlOutput("key_date4"), style = {"color:#1b9e77;font-size:20px;font-style:italic"}),
+      span("key dates:", style = {"font-size:30px;font-style:italic"} ),
+      tags$div(class = "keydate", list(htmlOutput("key_date1"), 
+                                       htmlOutput("key_date2"),
+                                       htmlOutput("key_date3"),
+                                       htmlOutput("key_date4"))),
       br(),
-      span("preview of timetable:", style = {"color:blue; font-size:30px; font-style:italic; !imporant"} ),
+      span("preview of timetable:", style = {"font-size:30px; font-style:italic;"} ),
       uiOutput("md_file"))
 )
 )
@@ -73,16 +80,16 @@ server = function(input, output, session) {
     })
   
   #date print function
-  dprint <- function(date_to_use, adjuster) {
+  dprint <- function(date_to_use, adjuster){
     new_date <- date_to_use - adjuster
-    paste0(wday(new_date, label = TRUE, abbr = FALSE)," ", format(new_date, "%d %B %Y"))
+    format(new_date, '%A %d %B %Y')
   }
   
   #key date generator
-  output$key_date1 <- reactive({paste0(dprint(input$report_date, 12), " - key messages handling")})
-  output$key_date2 <- reactive({paste0(dprint(input$report_date, 7), " - 5 day PRA")})
-  output$key_date3 <- reactive({paste0(dprint(input$report_date, 6), " - SG handling meeting")})
-  output$key_date4 <- reactive({paste0(dprint(input$report_date, 0), " - publication")})
+  output$key_date1 <- reactive({glue("{dprint(input$report_date, 12)} - key messages handling")})
+  output$key_date2 <- reactive({glue("{dprint(input$report_date, 7)} - 5 day PRA")})
+  output$key_date3 <- reactive({glue("{dprint(input$report_date, 6)} - SG handling meeting")})
+  output$key_date4 <- reactive({glue("{dprint(input$report_date, 0)} - publication")})
   
   #show html output as a preview
   output$md_file <- renderUI({
@@ -103,7 +110,7 @@ server = function(input, output, session) {
     
     #generate filename from pub title
     filename = function() {
-      paste0(format(Sys.Date(), "%Y_%m_%d"), "_", clean_title(), "_timetable.html")
+      glue("{format(Sys.Date(), '%Y_%m_%d')}_{clean_title()}_timetable.html")
     },
     
     content = function(file) {

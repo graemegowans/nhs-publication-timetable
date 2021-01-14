@@ -7,41 +7,41 @@ params:
 <style type="text/css">
 
 div.statgov { 
-color: rgb(0,71,133) !important;
+color: #3F3685 !important;
 }
 
 div.statgov2 { 
-color: rgb(0,71,133) !important;
+color: #3F3685 !important;
 font-weight: bold
 
 }
 
 div.pubs { 
-color: orange !important;
+color: #9B4393 !important;
 }
 
 div.pubs2 { 
-color: orange !important;
+color: #9B4393 !important;
 font-weight: bold
 }
 
 div.open_data { 
-color: green !important;
+color: #1E7F84 !important;
 }
 
 div.open_data2 { 
-color: green !important;
+color: #1E7F84 !important;
 font-weight: bold
 }
 
 div.key_date { 
-color: red !important;
+color: #0078D4 !important;
 font-size: 20px;
 font-weight: bold
 }
 
 div.key_date2 { 
-color: red !important;
+color: #0078D4 !important;
 font-weight: bold
 }
 
@@ -55,12 +55,17 @@ body {
   font-size: 10pt;
 }
 
-h3 {
+h1 {
+  font-family: Arial;
+  font-size: 20pt;
+}
+
+h2 {
   font-family: Arial;
   font-size: 12pt;
 }
 
-h4 {
+h3 {
   font-family: Arial;
   font-size: 11pt;
 }
@@ -71,61 +76,76 @@ h4 {
 knitr::opts_chunk$set(echo = TRUE)
 library(lubridate)
 library(tidyverse)
+library(glue)
 
 #date print function
 dprint <- function(date_to_use, adjuster){
   new_date <- date_to_use - adjuster
-  paste0(wday(new_date, label = TRUE, abbr = FALSE)," ", format(new_date, "%d %B %Y"))
+  format(new_date, '%A %d %B %Y')
 }
 
 #extract parameters to new objects
 pub_name <- params$input_pub_name
 pub_date <- ymd(params$input_pub_date)
-
 ```
 
-## **timetable for publication**
-### **Publication: `r pub_name`**  
-### **Date selected: `r dprint(pub_date,0)`**
-
-```{r echo = FALSE}
-pub_day <- wday(pub_date, label = TRUE, abbr = FALSE)
-```
+# **Publication: `r pub_name`**  
+## **Publication date: `r dprint(pub_date,0)`**
+## **Timetable generated: `r Sys.Date()`**
 
 ***
+## key contacts:
+* StatsGov team - phs.statsgov@phs.scot
+* Publications team - phs.statspublications@phs.scot
+* Websites team - phs.websites@phs.scot
+* Open data team - phs.opendata@phs.scot
+* PHS Communications team - phs.comms@phs.scot
+* PHS Release Preview mailbox - phs.releasepreview@phs.scot
+
+***
+## key dates:
+* `r glue("{dprint(pub_date, 12)} - key messages handling")`
+* `r glue("{dprint(pub_date, 7)} - 5 day PRA")`
+* `r glue("{dprint(pub_date, 6)} - SG handling meeting")`
+* `r glue("{dprint(pub_date, 0)} - publication")`
+ 
+***
+
+## colour key:
 <div class = "key_date2">Key dates</div>
-<div class = "statgov2">Statistical Governance</div>
-<div class = "pubs2">Publications team</div>
-<div class = "open_data2">Open data</div>
+<div class = "statgov2">StatsGov actions</div>
+<div class = "pubs2">Publications actions</div>
+<div class = "open_data2">Open data actions</div>
 ***
 
-### **`r dprint(pub_date, 13)`**
+## **`r dprint(pub_date, 13)`**
 
-#### *Analyst actions:*
+### *Analyst actions:*
 
-* **Prior to today:**
-If possible, review content of publication with the Communications Manager:<br>NSS.PHI-Communications@nhs.net
+* **Prior to today:** If possible, review content of publication with the Communications team
 * Ensure the publication summary is in the relevant Health Topic folder for review 
-at Key Messages Handling meeting by 3pm:<br>`Publications/HealthTopic/YourHealthTopic/PublicationName/yyyy-mm-dd`
+at Key Messages Handling meeting by 3pm:<br>`Publications/Health Topic/YourHealthTopic/PublicationName/yyyy-mm-dd`
 
 ***
-### **`r dprint(pub_date, 12)`**
+## **`r dprint(pub_date, 12)`**
 
-#### *Analyst actions:*
+<div class = "key_date">Key messages meeting</div>
 
-* Attend Key messages handling meeting.
-* Give an overview of the publication. A completed Twitter Content Submission form is also required.
+### *Analyst actions:*
 
-#### *Publications & SG Team Actions:*
+* Attend Key messages handling meeting to give an overview of the publication. 
+* A completed Twitter Content Submission form is also required.
+
+### *StatsGov:*
 
 <div class = "statgov">
 * Attend Key messages handling meeting.
 </div>
 
 ***
-### **`r dprint(pub_date, 8)` - prior to 8am**
+## **`r dprint(pub_date, 8)` - prior to 8am**
 
-#### *Analyst actions:*
+### *Analyst actions:*
 
 * Analyst finalises Publication Summary, Publication Report, Statistical Release (if appropriate) 
 and all downloadable tables/files <div class = "open_data">(Excel and csv/Open Data)</div>
@@ -133,127 +153,133 @@ and all downloadable tables/files <div class = "open_data">(Excel and csv/Open D
 * Editor checks the publication for accuracy and presentation and completes checklist on the Publication Report. 
 * Service Manager (or equivalent) then gives the Approval for Release by signing the Publication Report 
 * Provide Publications Team with narrative for all web pages within the topic area that 
-need updated when the publication goes live using NSS.PHIWebsites@nhs.net 
+need updated when the publication goes live.
 
-#### *Publications & SG Team Actions:*
+### *Publications team:*
 
 <div class = "pubs">
 * Populate Weblink document with URLs and secure login details.
 </div>
 
 ***
-### **`r dprint(pub_date, 8)` - 8am**
+## **`r dprint(pub_date, 8)` - 8am**
 
-#### *Analyst actions:*
+### *Analyst actions:*
 
-* Place all files in shared directory by 8am, including all Open Data Files:
-<br> `Publications/HealthTopic/YourHealthTopic/PublicationName/yyyy-mm-dd`)
-* Editor advises Publications Team by 8:00am of this transfer via email: NSS.PHIPublications@nhs.net
+* Place publication files in shared directory by 8am:
+<br> `Publications/Health Topic/YourHealthTopic/PublicationName/yyyy-mm-dd`)
+* Place Open Data files in shared directory by 8am:
+<br> `Publications/Open Data (Non Health Topic)/Data`)
+* Editor advises Publications Team by 8am of this transfer via email.
 
-#### *Publications & SG Team Actions:*
+### *Publications team:*
 <div class = "pubs">
-* Load publication files for 5 day Pre-Release-Access to secure folders by midday.
-* Send Weblink document to analysts and Statistical Governance Team by midday.
+* Load publication files for 5 day Pre-Release-Access to secure folders by 12pm.
+* Send Weblink document to analysts and Statistical Governance Team by 12pm.
 </div>
 
 ***
-### **`r dprint(pub_date, 7)`**
+## **`r dprint(pub_date, 7)`**
 
 <div class = "key_date">5 Day Pre Release Access (PRA)</div>
 
-#### *Analyst actions:*
+### *Analyst actions:*
 
-* *Note:* 5 day PRA can only be provided by ISD Director and
+* *Note:* 5 day PRA can only be provided by Head of Profession for Statistics and
 Statistical Governance; exceptions to this need Head of Service approval.
-* Where 5 day PRA for other individuals has been agreed with Head of Service/Service Manager/Statistical Governance,
-send email around 11:30 am.
+* Where 5 day PRA for other individuals has been agreed with Head of Service/Service Manager/Statistical Governance, send email around 11:30am.
 
-#### *Publications & SG Team Actions:*
+### *StatsGov:*
 <div class = "statgov">
 * Executive Office sends email with links for PRA, to all NHS Board CEs, Communications Manager.
-* Email site links to ASD (Head, Deputy & PA) for PRA by 11:30 (as soon as checks are complete) and notify analysts.
+* Email site links to ASD (Head, Deputy & PA) for PRA by 11:30am (as soon as checks are complete) and notify analysts.
 </div>
+
+### *Publications team:*
 <div class = "pubs">
 * Prepare site for 5 day Pre-Release Access by 11:30am.
 </div>
 
 ***
-### **`r dprint(pub_date, 6)`**
+## **`r dprint(pub_date, 6)`**
 
 <div class = "key_date">Handling meeting</div>
 
-#### *Analyst actions:*
+### *Analyst actions:*
 
 * Editor (or equivalent) to attend Handling Meeting, if required.  
-This meeting is usually held at Gyle Square (teleconference with SG)
-* If changes are required, advise Publications Team and provide the changes as soon as possible:
-<br>NSS.PHIPublications@nhs.net
-* If changes are required to Open Data content, contact Open Data team as soon as possible:<br>NSS.PHI-OpenData@nhs.net
+* This meeting is usually held at Gyle Square (teleconference with SG)
+* If changes are required, advise Publications Team and provide the changes as soon as possible.
+* If changes are required to Open Data content, contact Open Data team as soon as possible.
 * If no further changes are required, also advise Publications Team 
 
-#### *Publications & SG Team Actions:*
+### *StatsGov:*
 <div class = "statgov">
 * Facilitate Handling Meeting at Gyle Square.
 </div>
 
 ***
-### **`r dprint(pub_date, 5)`**
+## **`r dprint(pub_date, 5)`**
 
-#### *Analyst actions:*
+### *Analyst actions:*
 
 * Final Publication Summary, Report, Statistical Release (if appropriate) and 
-Twitter content form and tables are placed in shared directory as soon as possible and no later than 12 noon:<br>
+Twitter content form and tables are placed in shared directory as soon as possible and no later than 12pm:<br>
 (`Dept/PHI Publications/yyyy-mm-dd/YourPublication/`)
-* Editor advises Publications Team of this transfer via email (NSS.PHIPublications@nhs.net) by 12 noon.
+* Editor advises Publications Team of this transfer via email by 12pm.
 Even if there's no change, please advise Publications Team.
 * *Note:* Publications Team will create PDF versions of the Publication Summary, Publication Report and
 Statistical Release (if appropriate) and make available for Analyst to check.
 
-#### *Publications & SG Team Actions:*
+### *Publications team:*
 <div class = "pubs">
 * Create PDF versions of the Publication Summary, Publication Report and Statistical Release (if appropriate)
 and send to Analyst for checking.
 * Reload any updated Excel files.
 </div>
+
+### *Open data:*
 <div class = "open_data">
-* If appropriate, send Publications Team URL for Open Data on CKAN:<br>nss.isdspnmanager@nhs.net
+* If appropriate, send Publications Team URL for Open Data on CKAN.
 </div>
 
 ***
-### **`r dprint(pub_date, 4)`**
+## **`r dprint(pub_date, 4)`**
 
-#### *Analyst actions:*
+### *Analyst actions:*
 
 * Check PDF versions and data files are the latest versions
-* Notify Publications Team of any issues with the PDF versions/links etc as soon as possible and by Monday 12 noon at the latest. 
+* Notify Publications Team of any issues with the PDF versions/links etc as soon as possible and by Monday 12pm at the latest. 
 
-#### *Publications & SG Team Actions:*
+### *Publications team:*
 <div class = "pubs">
 * Create PDF versions and send to Analyst for checking.</div>
 
 ***
-### **`r dprint(pub_date, 1)`**
+## **`r dprint(pub_date, 1)`**
 
-#### *Analyst actions:*
+### *Analyst actions:*
 
-* Continue to check all links and the PDF versions of the Publication Summary and Report.
-* Publications Team must be advised of any issues as soon as possible and by 12 noon at the latest.
+* Continue to check all links and the PDF versions of the Publication Summary/Report.
+* Publications Team must be advised of any issues as soon as possible and by 12pm at the latest.
 
-#### *Publications & SG Team Actions:*
+### *Publications team:*
 <div class = "pubs">
-* Finalise PDF versions and send to Analyst for checking by 9:00am.
-* Final preparing of site for going live the following day.</div>
+* Finalise PDF versions and send to Analyst for checking by 9am.
+* Final preparation of site for going live the following day.</div>
 
 ***
-### **`r dprint(pub_date, 0)`**
+## **`r dprint(pub_date, 0)`**
 
 <div class = "key_date">Publication date</div>
 
-#### *Analyst actions:*
+### *Analyst actions:*
 
-* Check that the website is live and correct for your publication at 9.30am.
+* Check that the website is live and correct for your publication at 9:30am.
 * Review the SG News Release section (http://www.scotland.gov.uk/News/News-Today).
 
-#### *Publications & SG Team Actions:*
-<div class = "pubs">* Publications release at 9:30am on ISD Website.</div>
-<div class = "statgov">* Check that the ISD website is live and correct.</div>
+### *Publications team:*
+<div class = "pubs">* Publications release at 9:30am on PHS Website.</div>
+
+### *StatsGov:*
+<div class = "statgov">* Check that the PHS website is live and correct.</div>
